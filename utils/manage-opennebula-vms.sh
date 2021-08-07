@@ -30,6 +30,7 @@ help_usage()
    echo "-n|--number   Number of VMs to create."
    echo "-c|--cpu      vCPU for each VM."
    echo "-m|--memory   Memory for each VM."
+   echo "-t|--pattern  Hostname pattern for each VM."
    echo
    exit 0
 }
@@ -76,6 +77,11 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       shift # past value
       ;;
+    -t|--pattern)
+      PATTERN="$2"
+      shift # past argument
+      shift # past value
+      ;;
     *)    # unknown option
       POSITIONAL+=("$1") # save it in an array for later
       echo unknown option && echo $POSITIONAL
@@ -93,14 +99,15 @@ echo "OPENNEBULA PASSWORD= ${PASSWORD}"
 echo "VMs NUMBER= ${NUMBER}"
 echo "VMs vCPUs= ${CPU}"
 echo "VMs MEMORY= ${MEMORY}"
+echo "VMs HOSTNAME PATTERN= ${PATTERN}"
 
-cat << EOF > target/opennebula.tfvars
+cat << EOF > target/terraform.tfvars
 one_endpoint = "http://$ENDPOINT:2633/RPC2"
 one_username = "$USER"
 one_password = "$PASSWORD"
 EOF
 
-cat << EOF > target/opennebula.tf
+cat << EOF > target/terraform.tf
 terraform {
   required_providers {
     opennebula = {
@@ -122,7 +129,7 @@ provider "opennebula" {
 
 resource "opennebula_virtual_machine" "demo" {
   count  = $NUMBER
-  name   = "mymachinename"
+  name   = "${PATTERN}-0\${count.index}"
   cpu    = $CPU
   vcpu   = $CPU
   memory = $MEMORY

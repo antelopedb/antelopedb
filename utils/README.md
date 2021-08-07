@@ -20,7 +20,7 @@ sh manage-opennebula-vms.sh --help
 Example session:
 
 ```
-sh manage-opennebula-vms.sh -e master.domain.com -u theuser -p thepassword -n 2 -c 2 -m 2048
+sh manage-opennebula-vms.sh -e master.domain.com -u theuser -p thepassword -n 2 -c 2 -m 2048 -t vmhostname
 cd target
 terraform init
 terraform validate

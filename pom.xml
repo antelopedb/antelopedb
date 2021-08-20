@@ -25,6 +25,7 @@ language governing permissions and limitations under the License. -->
 
     <modules>
         <module>antelopedb-manager</module>
+        <module>antelopedb-agent</module>
         <module>antelopedb-assembly</module>
     </modules>
 

@@ -1,4 +1,4 @@
-package org.apache;
+package org.apache.antelopedb.agent;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

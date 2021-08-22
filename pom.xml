@@ -36,6 +36,11 @@ language governing permissions and limitations under the License. -->
                 <artifactId>antelopedb-manager</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.antelopedb</groupId>
+                <artifactId>antelopedb-agent</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

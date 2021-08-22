@@ -68,38 +68,91 @@ language governing permissions and limitations under the License. -->
 
   <build>
     <plugins>
-      <plugin>
-        <groupId>${quarkus.platform.group-id}</groupId>
-        <artifactId>quarkus-maven-plugin</artifactId>
-        <version>${quarkus.platform.version}</version>
-        <extensions>true</extensions>
-        <executions>
-          <execution>
-            <goals>
-              <goal>build</goal>
-              <goal>generate-code</goal>
-              <goal>generate-code-tests</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${compiler-plugin.version}</version>
-        <configuration>
-          <parameters>${maven.compiler.parameters}</parameters>
-        </configuration>
-      </plugin>
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${surefire-plugin.version}</version>
-        <configuration>
-          <systemPropertyVariables>
-            <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
-            <maven.home>${maven.home}</maven.home>
-          </systemPropertyVariables>
-        </configuration>
-      </plugin>
+        <plugin>
+            <groupId>${quarkus.platform.group-id}</groupId>
+            <artifactId>quarkus-maven-plugin</artifactId>
+            <version>${quarkus.platform.version}</version>
+            <extensions>true</extensions>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>build</goal>
+                  <goal>generate-code</goal>
+                  <goal>generate-code-tests</goal>
+                </goals>
+              </execution>
+            </executions>
+        </plugin>
+
+        <plugin>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${compiler-plugin.version}</version>
+            <configuration>
+              <parameters>${maven.compiler.parameters}</parameters>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>${surefire-plugin.version}</version>
+            <configuration>
+              <systemPropertyVariables>
+                <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
+                <maven.home>${maven.home}</maven.home>
+              </systemPropertyVariables>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.12.0</version>
+            <configuration>
+                <!-- where package.json is available -->
+                <workingDirectory>${project.basedir}/src/main/webapp</workingDirectory>
+                <!-- where npm and node are installed -->
+                <installDirectory>target</installDirectory>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>install node and npm</id>
+                    <goals>
+                        <goal>install-node-and-npm</goal>
+                    </goals>
+                    <configuration>
+                        <nodeVersion>v14.17.5</nodeVersion>
+                        <npmVersion>6.14.14</npmVersion>
+                    </configuration>
+                </execution>
+                <execution>
+                  <id>npm install</id>
+                  <goals>
+                    <goal>npm</goal>
+                  </goals>
+                  <configuration>
+                    <arguments>install</arguments>
+                  </configuration>
+                </execution>
+                <execution>
+                  <id>npm run build</id>
+                  <goals>
+                    <goal>npm</goal>
+                  </goals>
+                  <configuration>
+                    <arguments>run build</arguments>
+                  </configuration>
+                </execution>
+                <execution>
+                  <id>npm run prod</id>
+                  <goals>
+                    <goal>npm</goal>
+                  </goals>
+                  <configuration>
+                    <arguments>run prod</arguments>
+                  </configuration>
+                </execution>
+            </executions>
+        </plugin>
     </plugins>
   </build>
 

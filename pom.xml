@@ -76,6 +76,35 @@ language governing permissions and limitations under the License. -->
 
         <plugins>
             <!--
+               Delete additional files not exposed to Maven
+            -->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>antelopedb-manager/src/main/webapp/node_modules</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>antelopedb-manager/src/main/webapp/dist</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>antelopedb-manager/src/main/resources/META-INF/resources</directory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/.gitignore</exclude>
+                            </excludes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+            <!--
                 Check Style Maven Plugin Configuration
             -->
             <plugin>

@@ -43,3 +43,11 @@ nb-configuration.xml
 
 # Local environment
 .env
+
+# Node
+**/node_modules
+dist
+yarn-error.log
+stats.json
+coverage
+storybook-static

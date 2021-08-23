@@ -26,7 +26,25 @@ language governing permissions and limitations under the License. -->
             <directory>
                 ${maven.multiModuleProjectDirectory}/antelopedb-manager/target/quarkus-app
             </directory>
-            <outputDirectory>antelopedb-platform-${project.version}</outputDirectory>
+            <outputDirectory>antelopedb-platform-${project.version}/lib</outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ${maven.multiModuleProjectDirectory}/antelopedb-manager/src/main/resources/bin
+            </directory>
+            <outputDirectory>antelopedb-platform-${project.version}/bin</outputDirectory>
+            <includes>
+                <include>**</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>
+                ${maven.multiModuleProjectDirectory}/antelopedb-manager/src/main/resources/conf
+            </directory>
+            <outputDirectory>antelopedb-platform-${project.version}/conf</outputDirectory>
             <includes>
                 <include>**</include>
             </includes>

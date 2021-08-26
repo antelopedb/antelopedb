@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="28.43833mm"
+   height="44.8946mm"
+   viewBox="0 0 28.43833 44.8946"
+   version="1.1"
+   id="svg214"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="antelopedb-logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview216"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.6743757"
+     inkscape:cx="76.366927"
+     inkscape:cy="229.10078"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs211">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient23369"
+       id="linearGradient88"
+       gradientUnits="userSpaceOnUse"
+       x1="447.39963"
+       y1="163.70018"
+       x2="416.2825"
+       y2="166.48412" />
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient23369">
+      <stop
+         style="stop-color:#917c6f;stop-opacity:1;"
+         offset="0"
+         id="stop23365" />
+      <stop
+         style="stop-color:#917c6f;stop-opacity:0;"
+         offset="1"
+         id="stop23367" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-84.927447,-87.948389)">
+    <g
+       id="g29-7"
+       style="display:inline"
+       transform="matrix(0.61579633,0,0,0.61580799,-173.26403,20.213861)"
+       inkscape:export-filename="/home/aramos/Documentos/aramos/proyectos/apache_antelope/logo/rect240.png"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <path
+         style="opacity:1;fill:url(#linearGradient88);fill-opacity:1;stroke:none;stroke-width:0.267031px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 419.61319,146.44218 -2e-5,36.4228 c 12.83257,-9.31435 16.70244,-3.03768 31.11345,-12.9655 0.002,-5.64083 0.003,-11.28165 0.005,-16.92248 -9.02179,-6.53482 -22.15478,-1.03542 -31.1183,-6.53482 z"
+         id="path7987-5"
+         sodipodi:nodetypes="ccccc"
+         inkscape:export-filename="/home/aramos/Documentos/aramos/proyectos/apache_antelope/path7988.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         style="opacity:1;fill:#917c6f;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 421.4228,111.69169 c 2.2726,1.73605 17.56119,13.347 28.10822,29.45362 -5.85497,-9.44257 -18.33907,-24.53023 -23.91872,-29.04857 -1.96623,-1.59223 -1.97893,-3.15405 1.12726,-1.17502 0.95166,0.60633 30.30558,22.26974 32.86359,46.5975 1.25078,5.13894 2.99682,5.03473 3.75235,15.41683 1.07833,0.77649 1.84701,2.98334 2.0678,4.67203 0.35642,2.72605 -1.76027,5.62351 -5.82015,5.2569 -2.15736,-0.19481 -3.00529,-0.96176 -4.49367,-4.69427 -4.20267,-1.67452 -6.27856,-4.02072 -7.70984,-6.57051 -5.22298,-7.02675 0.14028,-14.83178 2.86663,-16.42087 -2.9405,-16.14298 -28.11594,-40.30298 -29.92987,-42.33305 -1.81393,-2.03007 -1.1862,-2.89064 1.0864,-1.15459 z"
+         id="path9068-3"
+         sodipodi:nodetypes="zcssccssccczz"
+         inkscape:export-filename="/home/aramos/Documentos/aramos/proyectos/apache_antelope/path7988.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+      <path
+         style="fill:#ffffff;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         d="m 455.07926,162.07592 c 0,0 -1.99693,-0.47568 -3.46945,-0.49964 -1.00251,-0.0163 0.79585,1.66361 1.78761,1.98058 0.99177,0.31697 1.90003,0.46501 2.2361,-0.31315 0.33607,-0.77817 -0.0276,-0.98063 -0.55426,-1.16779 z"
+         id="path24195-5"
+         sodipodi:nodetypes="sszzs"
+         inkscape:export-filename="/home/aramos/Documentos/aramos/proyectos/apache_antelope/path7988.png"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
+    </g>
+  </g>
+</svg>

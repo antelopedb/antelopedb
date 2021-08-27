@@ -1,5 +1,5 @@
 # Maven
-target/
+**/target
 pom.xml.next
 pom.xml.tag
 pom.xml.releaseBackup
@@ -50,3 +50,24 @@ yarn-error.log
 stats.json
 coverage
 storybook-static
+
+# Rat
+*.ipr
+*.iws
+/target/*
+**/target/*
+.svn
+**/.svn
+.project
+*/.project
+.classpath
+*/.classpath
+.settings
+*/.settings
+*.iml
+*/*.iml
+*/*.ipr
+*/*.iws
+.idea/*
+*/.idea
+/target/

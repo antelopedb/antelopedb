@@ -1,6 +1,6 @@
 {
-  "name": "patternfly-seed",
-  "version": "0.0.2",
+  "name": "antelopedb-manager-ui",
+  "version": "0.0.1-SNAPSHOT",
   "description": "An open source build scaffolding utility for web apps.",
   "repository": "https://github.com/patternfly/patternfly-react-seed.git",
   "homepage": "https://patternfly-react-seed.surge.sh",

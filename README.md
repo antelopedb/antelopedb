@@ -7,6 +7,22 @@ AntelopeDB is licensed under the [Apache License, Version 2.0](http://www.apache
 
 For additional information, see the LICENSE and NOTICE files.
 
+## Usage
+
+### Minimum Requirements
+* JDK 11
+* Apache Maven 3.8.2
+
+### Building
+
+Run `mvn clean install` or for parallel build execute `mvn -T 2.0C clean install`. 
+
+Run `mvn clean install -DskipTests` to skip unit test execution.
+
+If you wish to enable style and license checks, specify the contrib-check profile:
+
+`mvn clean install -Pcontrib-check`
+
 ---
 <sub>
 Licensed to the Apache Software Foundation (ASF) under one

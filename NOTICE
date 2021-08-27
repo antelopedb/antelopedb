@@ -4,3 +4,7 @@ This product includes the following work from drawio.net
 under Apache Software License V2 [https://github.com/jgraph/drawio/blob/dev/LICENSE]:
 - Documentation files with extension .drawio
 
+This product includes code based on the template project
+Red Hat PatternFly patternfly-react-seed under MIT license
+https://github.com/patternfly/patternfly-react-seed/blob/main/LICENSE
+

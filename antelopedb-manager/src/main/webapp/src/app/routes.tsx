@@ -6,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing,
  * software distributed under the License is distributed on an
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -23,12 +23,19 @@ import { accessibleRouteChangeHandler } from '@app/utils/utils';
 import { Dashboard } from '@app/Dashboard/Dashboard';
 import { Support } from '@app/Support/Support';
 import { NotFound } from '@app/NotFound/NotFound';
-import { Admin } from '@app/Admin/Admin';
 import { useDocumentTitle } from '@app/utils/useDocumentTitle';
 import { LastLocationProvider, useLastLocation } from 'react-router-last-location';
 import Cookies from 'js-cookie';
-
-/* FIXME: no original routes from project */
+import {EnvironmentsDeployments} from "@app/Deployments/Environments/EnvironmentsDeployments";
+import {ClustersDeployments} from "@app/Deployments/Clusters/ClustersDeployments";
+import {Audit} from "@app/Audit/Audit";
+import {Logs} from "@app/Logs/Logs";
+import {Users} from "@app/Users/Users";
+import {BackupsOperations} from "@app/Operations/Backups/BackupsOperations";
+import {ServicesOperations} from "@app/Operations/Services/ServicesOperations";
+import {PipelinesOperations} from "@app/Operations/Pipelines/PipelinesOperations";
+import {QueriesOperations} from "@app/Operations/Queries/QueriesOperations";
+import {DatabasesOperations} from "@app/Operations/Databases/DatabasesOperations";
 
 let routeFocusTimer: number;
 
@@ -41,9 +48,16 @@ export interface IAppRoute {
   path: string;
   title: string;
   isAsync?: boolean;
+  routes?: undefined;
 }
 
-let routes: IAppRoute[] = [];
+export interface IAppRouteGroup {
+  label: string;
+  routes: IAppRoute[];
+}
+
+export type AppRouteConfig = IAppRoute | IAppRouteGroup;
+let routes: AppRouteConfig[] = [];
 
 const parseJwt = (token) => {
   try {
@@ -54,9 +68,20 @@ const parseJwt = (token) => {
 }
 
 const generateRoutes = () => {
-  let role = parseJwt(Cookies.getJSON('jwt-example-cookie').access_token);
+  let role;
+  /*
+    FIXME:
+    Whe the cookie is removed manually, this function
+    is executed and raised one error. This function is
+    execute on each rendering of the routes.
+   */
+  try {
+    role = parseJwt(Cookies.getJSON('jwt-example-cookie').access_token);
+  } catch(err) {
+    role = {"role":"null" };
+  }
 
-  let theroutes: IAppRoute = [];
+  let theroutes: AppRouteConfig = [];
 
   if (role.role === "admin") {
     theroutes = [
@@ -65,25 +90,92 @@ const generateRoutes = () => {
         exact: true,
         label: 'Dashboard',
         path: '/',
-        title: 'Main Dashboard Title'
+        title: 'AntelopeDB Platform | Main Dashboard',
       },
       {
-        component: Support,
-        exact: true,
-        isAsync: true,
-        label: 'Support',
-        path: '/support',
-        title: 'Support Page Title'
+        label: 'Deployments',
+        routes: [
+          {
+            component: ClustersDeployments,
+            exact: true,
+            label: 'Clusters',
+            path: '/deployments/clusters',
+            title: 'AntelopeDB Platform | Clusters Deployments',
+          },
+          {
+            component: EnvironmentsDeployments,
+            exact: true,
+            label: 'Deployments',
+            path: '/deployments/environments',
+            title: 'AntelopeDB Platform | Environments Deployments',
+          }
+        ]
       },
       {
-        component: Admin,
+        label: 'Operations',
+        routes: [
+          {
+            component: BackupsOperations,
+            exact: true,
+            label: 'Backups',
+            path: '/operations/backups',
+            title: 'AntelopeDB Platform | Backups Operations',
+          },
+          {
+            component: ServicesOperations,
+            exact: true,
+            label: 'Services',
+            path: '/operations/services',
+            title: 'AntelopeDB Platform | Services Operations',
+          },
+          {
+            component: PipelinesOperations,
+            exact: true,
+            label: 'Pipelines',
+            path: '/operations/pipelines',
+            title: 'AntelopeDB Platform| Pipeline Operations',
+          },
+          {
+            component: QueriesOperations,
+            exact: true,
+            label: 'Queries',
+            path: '/operations/queries',
+            title: 'AntelopeDB Platform | Queries Operations',
+          },
+          {
+            component: DatabasesOperations,
+            exact: true,
+            label: 'Databases',
+            path: '/operations/databases',
+            title: 'AntelopeDB Platform | Databases Operations',
+          }
+        ]
+      },
+      {
+        component: Users,
         exact: true,
         isAsync: true,
-        label: 'Admin',
-        path: '/admin',
-        title: 'Admin Page'
+        label: 'Users',
+        path: '/users',
+        title: 'AntelopeDB Platform | Users Page',
+      },
+      {
+        component: Logs,
+        exact: true,
+        isAsync: true,
+        label: 'Logs',
+        path: '/logs',
+        title: 'AntelopeDB Platform | Logs Page',
+      },
+      {
+        component: Audit,
+        exact: true,
+        isAsync: true,
+        label: 'Audit',
+        path: '/audit',
+        title: 'AntelopeDB Platform | Audit Page',
       }
-    ];
+   ]
   } else {
     theroutes = [
       {
@@ -103,12 +195,9 @@ const generateRoutes = () => {
       }
     ];
   }
-
   routes = theroutes;
-
   return theroutes;
 }
-
 
 // a custom hook for sending focus to the primary content container
 // after a view has loaded so that subsequent press of tab key
@@ -126,22 +215,15 @@ const useA11yRouteChange = (isAsync: boolean) => {
 }
 
 
-const RouteWithTitleUpdates = ({
-  component: Component,
-  isAsync = false,
-  title,
-  ...rest
-}: IAppRoute) => {
+const RouteWithTitleUpdates = ({ component: Component, isAsync = false, title, ...rest }: IAppRoute) => {
   useA11yRouteChange(isAsync);
   useDocumentTitle(title);
 
   function routeWithTitle(routeProps: RouteComponentProps) {
-    return (
-      <Component {...rest} {...routeProps} />
-    );
+    return <Component {...rest} {...routeProps} />;
   }
 
-  return <Route render={routeWithTitle} />;
+  return <Route render={routeWithTitle} {...rest}/>;
 };
 
 const PageNotFound = ({ title }: { title: string }) => {
@@ -150,29 +232,24 @@ const PageNotFound = ({ title }: { title: string }) => {
 };
 
 const AppRoutes = () => (
-      <LastLocationProvider>
-        <Switch>
-          {
-             generateRoutes().map(({
-                         path,
-                         exact,
-                         component,
-                         title,
-                         isAsync
-                         }, idx) => (
-                  <RouteWithTitleUpdates
-                    path={path}
-                    exact={exact}
-                    component={component}
-                    key={idx}
-                    title={title}
-                    isAsync={isAsync}
-                  />
-            ))
-          }
-          <PageNotFound title="404 Page Not Found"/>
-        </Switch>
-      </LastLocationProvider>
+  <LastLocationProvider>
+    <Switch>
+      {
+        generateRoutes().reduce((flattened, route) => [...flattened, ...(route.routes ? route.routes : [route])],
+          [] as IAppRoute[]).map(({ path, exact, component, title, isAsync }, idx) => (
+          <RouteWithTitleUpdates
+            path={path}
+            exact={exact}
+            component={component}
+            key={idx}
+            title={title}
+            isAsync={isAsync}
+          />
+        ))
+      }
+      <PageNotFound title="404 Page Not Found"/>
+    </Switch>
+  </LastLocationProvider>
 );
 
-export { AppRoutes, routes };
+export { AppRoutes, generateRoutes };

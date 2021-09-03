@@ -36,7 +36,7 @@ import {
   Dropdown,
   KebabToggle, DropdownItem, DropdownGroup, DropdownToggle, Avatar
 } from '@patternfly/react-core';
-import { routes, IAppRoute, IAppRouteGroup } from '@app/routes';
+import { generateRoutes, IAppRoute, IAppRouteGroup } from '@app/routes';
 import logo from '@app/bgimages/antelopedb-logo.svg';
 import CogIcon from '@patternfly/react-icons/dist/esm/icons/cog-icon';
 import HelpIcon from '@patternfly/react-icons/dist/esm/icons/help-icon';
@@ -229,7 +229,7 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({ children }) => {
   const Navigation = (
     <Nav id="nav-primary-simple" theme="dark">
       <NavList id="nav-list-simple">
-        {routes.map(
+        {generateRoutes().map(
           (route, idx) => route.label && (!route.routes ? renderNavItem(route, idx) : renderNavGroup(route, idx))
         )}
       </NavList>

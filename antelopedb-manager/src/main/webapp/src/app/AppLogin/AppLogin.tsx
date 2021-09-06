@@ -151,7 +151,6 @@ class AppLogin extends React.Component {
     );
 
     const images = {
-      lg: '/assets/images/pfbg_1200.jpg',
       sm: '/assets/images/pfbg_768.jpg',
       sm2x: '/assets/images/pfbg_768@2x.jpg',
       xs: '/assets/images/pfbg_576.jpg',

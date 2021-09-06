@@ -128,10 +128,10 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({ children }) => {
   const { logout } = dropDownOptions(history);
 
   const kebabDropdownItems = [
-    <DropdownItem>
+    <DropdownItem key="key1">
       <CogIcon /> Settings
     </DropdownItem>,
-    <DropdownItem>
+    <DropdownItem key="key2">
       <HelpIcon /> Help
     </DropdownItem>
   ];

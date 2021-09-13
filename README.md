@@ -1,6 +1,9 @@
 # AntelopeDB Platform
 Hybrid Transaction/Analytical Processing (HTAP) Database Platform
 
+
+![image info](docs/internal/assets/antelopedb-layers-logos.png)
+
 ## License
 
 AntelopeDB is licensed under the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).

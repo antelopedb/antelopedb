@@ -31,6 +31,7 @@ language governing permissions and limitations under the License. -->
 
     <properties>
         <apache-rat-plugin-version>0.13</apache-rat-plugin-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
@@ -216,6 +217,8 @@ language governing permissions and limitations under the License. -->
                         <exclude>**/.prettierrc/**</exclude>
                         <exclude>**/.dockerignore/**</exclude>
                         <exclude>**/*.drawio</exclude>
+                        <exclude>**/META-INF/**</exclude>
+                        <exclude>**/dist/**</exclude>
                     </excludes>
                 </configuration>
             </plugin>

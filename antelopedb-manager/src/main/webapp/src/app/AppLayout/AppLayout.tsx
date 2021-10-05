@@ -107,7 +107,7 @@ const AppLayout: React.FunctionComponent<IAppLayout> = ({ children }) => {
   };
 
   function LogoImg() {
-    // Clicking the logo icon, the navigation goes to the Dashboard.
+    // Clicking the logo icon, the navigation goes to the AdminDashboard.
     function handleClick() {
       history.push('/');
     }

@@ -20,7 +20,7 @@
 import * as React from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
 import { accessibleRouteChangeHandler } from '@app/utils/utils';
-import { Dashboard } from '@app/Dashboard/Dashboard';
+import { AdminDashboard } from '@app/Dashboard/AdminDashboard';
 import { Support } from '@app/Support/Support';
 import { NotFound } from '@app/NotFound/NotFound';
 import { useDocumentTitle } from '@app/utils/useDocumentTitle';
@@ -36,6 +36,7 @@ import {ServicesOperations} from "@app/Operations/Services/ServicesOperations";
 import {PipelinesOperations} from "@app/Operations/Pipelines/PipelinesOperations";
 import {QueriesOperations} from "@app/Operations/Queries/QueriesOperations";
 import {DatabasesOperations} from "@app/Operations/Databases/DatabasesOperations";
+import {UserDashboard} from "@app/Dashboard/UserDashboard";
 
 let routeFocusTimer: number;
 
@@ -86,11 +87,11 @@ const generateRoutes = () => {
   if (role.role === "admin") {
     theroutes = [
       {
-        component: Dashboard,
+        component: AdminDashboard,
         exact: true,
         label: 'Dashboard',
         path: '/',
-        title: 'AntelopeDB Platform | Main Dashboard',
+        title: 'AntelopeDB Platform | Main AdminDashboard',
       },
       {
         label: 'Deployments',
@@ -179,11 +180,11 @@ const generateRoutes = () => {
   } else {
     theroutes = [
       {
-        component: Dashboard,
+        component: UserDashboard,
         exact: true,
         label: 'Dashboard',
         path: '/',
-        title: 'Main Dashboard Title'
+        title: 'Main AdminDashboard Title'
       },
       {
         component: Support,

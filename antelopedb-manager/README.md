@@ -13,6 +13,10 @@ You can run your application in dev mode that enables live coding using:
 
 > **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 
+> **_NOTE:_**  Quarkus provides the Smallrye OpenAPI extension compliant with the MicroProfile OpenAPI specification 
+> in order to generate your API OpenAPI v3 specification: curl http://localhost:8080/q/openapi or 
+> http://localhost:8080/q/swagger-ui/
+
 ## Packaging and running the application
 
 The application can be packaged using:

@@ -71,3 +71,6 @@ storybook-static
 .idea/*
 */.idea
 /target/
+
+# Not freezed package.json
+package-lock.json

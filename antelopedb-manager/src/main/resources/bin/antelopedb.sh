@@ -15,4 +15,65 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
+TARGET_FILE=$0
 
+cd $(dirname $TARGET_FILE)
+TARGET_FILE=$(basename $TARGET_FILE)
+
+# Iterate down a (possible) chain of symlinks
+while [ -L "$TARGET_FILE" ]
+do
+    TARGET_FILE=$(readlink $TARGET_FILE)
+    cd $(dirname $TARGET_FILE)
+    TARGET_FILE=$(basename $TARGET_FILE)
+done
+
+# Compute the canonicalized name by finding the physical path
+# for the directory we're in and appending the target file.
+PHYS_DIR=$(pwd -P)
+
+SCRIPT_DIR=$PHYS_DIR
+PROGNAME=$(basename "$0")
+
+. "${SCRIPT_DIR}/antelopedb-env.sh"
+
+
+warn() {
+    echo "${PROGNAME}: $*"
+}
+
+die() {
+    warn "$*"
+    exit 1
+}
+
+run() {
+    ANTELOPEDB_CONF_DIR=${ANTELOPEDB_HOME}/conf
+
+    echo
+    echo "Java home: ${JAVA_HOME}"
+    echo "AntelopeDB home: ${ANTELOPEDB_HOME}"
+    echo "AntelopeDB Config File: ${ANTELOPEDB_CONF_DIR}"
+    echo
+
+    $JAVA_HOME/bin/java -jar ${ANTELOPEDB_HOME}/lib/quarkus-run.jar
+}
+
+main() {
+    run "$@"
+}
+
+
+case "$1" in
+    start|stop)
+        main "$@"
+        ;;
+
+    restart)
+        run "stop"
+        run "start"
+        ;;
+    *)
+        echo "Usage antelopedb {start|stop}"
+        ;;
+esac

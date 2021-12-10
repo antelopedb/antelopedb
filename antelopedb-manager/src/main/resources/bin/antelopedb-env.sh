@@ -16,3 +16,12 @@
 #    limitations under the License.
 
 
+# The default java implementation to use.
+JAVA_HOME=${JAVA_HOME:=/usr/lib/jvm/java-1.8.0}
+ANTELOPEDB_HOME=${ANTELOPEDB_HOME:=$PWD/..}
+#The directory for the AntelopeDB pid file
+ANTELOPEDB_PID_DIR=${ANTELOPEDB_PID_DIR:=$ANTELOPEDB_HOME/run}
+#The directory for AntelopeDB log files
+ANTELOPEDB_LOG_DIR=${ANTELOPEDB_LOG_DIR:=$ANTELOPEDB_HOME/logs}
+
+export JAVA_HOME ANTELOPEDB_HOME ANTELOPEDB_PID_DIR ANTELOPEDB_LOG_DIR

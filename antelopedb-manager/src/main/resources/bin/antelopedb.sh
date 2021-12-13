@@ -48,15 +48,16 @@ die() {
 }
 
 run() {
-    ANTELOPEDB_CONF_DIR=${ANTELOPEDB_HOME}/conf
+    ANTELOPEDB_CONF_DIR=${ANTELOPEDB_HOME}/config
 
     echo
     echo "Java home: ${JAVA_HOME}"
     echo "AntelopeDB home: ${ANTELOPEDB_HOME}"
-    echo "AntelopeDB Config File: ${ANTELOPEDB_CONF_DIR}"
+    echo "AntelopeDB Config File: ${ANTELOPEDB_CONF_DIR}/application.properties"
     echo
 
-    $JAVA_HOME/bin/java -jar ${ANTELOPEDB_HOME}/lib/quarkus-run.jar
+    cd ${ANTELOPEDB_HOME}
+    ${JAVA_HOME}/bin/java -jar ${ANTELOPEDB_HOME}/lib/quarkus-run.jar
 }
 
 main() {

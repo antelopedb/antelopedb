@@ -21,16 +21,20 @@ import javax.enterprise.event.Observes;
 
 import io.quarkus.runtime.ShutdownEvent;
 import io.quarkus.runtime.StartupEvent;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.jboss.logging.Logger;
 
 @ApplicationScoped
 public class AppLifecycleBean {
 
+    @ConfigProperty(name = "greeting.message")
+    String message;
+
     private static final Logger LOGGER = Logger.getLogger("ListenerBean");
 
     void onStart(@Observes StartupEvent ev) {
         System.out.println("AntelopeDB starting...");
-        LOGGER.info("The application is starting...");
+        LOGGER.info("The application is starting..." + message);
     }
 
     void onStop(@Observes ShutdownEvent ev) {

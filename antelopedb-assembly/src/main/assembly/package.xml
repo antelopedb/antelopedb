@@ -39,12 +39,13 @@ language governing permissions and limitations under the License. -->
             <includes>
                 <include>**</include>
             </includes>
+            <fileMode>0755</fileMode>
         </fileSet>
         <fileSet>
             <directory>
-                ${maven.multiModuleProjectDirectory}/antelopedb-manager/src/main/resources/conf
+                ${maven.multiModuleProjectDirectory}/antelopedb-manager/src/main/resources/config
             </directory>
-            <outputDirectory>antelopedb-platform-${project.version}/conf</outputDirectory>
+            <outputDirectory>antelopedb-platform-${project.version}/config</outputDirectory>
             <includes>
                 <include>**</include>
             </includes>

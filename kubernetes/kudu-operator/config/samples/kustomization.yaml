@@ -1,0 +1,4 @@
+## Append samples you want in your CSV to this file as resources ##
+resources:
+- kudu_v1alpha1_kuducluster.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples

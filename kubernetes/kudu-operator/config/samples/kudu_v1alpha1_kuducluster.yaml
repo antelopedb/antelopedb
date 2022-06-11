@@ -1,0 +1,6 @@
+apiVersion: kudu.apache.org/v1alpha1
+kind: KuduCluster
+metadata:
+  name: kuducluster-sample
+spec:
+  # TODO(user): Add fields here
